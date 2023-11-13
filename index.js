@@ -6,7 +6,7 @@ const filesName = "./examplesCreated/logo.svg";
 const setShapes = require('./lib/setShapes');
 
 // function to create the logo based off the users response
-function logoCreate(response) {
+function createLogo(response) {
     const svg = setShapes(response);
     fs.writeFile(filesName, svg, () => 
     console.log('SVG logo has been created!')
@@ -17,13 +17,14 @@ function logoCreate(response) {
 function init() {
     inquirer
         .prompt(questions)
-    then((response) => {
-        logoCreate(response);
+    .then((response) => {
+        createLogo(response);
     })
     .catch(err => {
         console.log(err)
     });
 }
+
 
 // initialize the program.
 init();
